@@ -1,0 +1,27 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "create-block/map-block",
+  "version": "0.1.0",
+  "title": "Map Block",
+  "category": "widgets",
+  "icon": "location",
+  "description": "A block to embed maps using a URL.",
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ]
+  },
+  "attributes": {
+    "mapUrl": {
+      "type": "string",
+      "default": "https://www.openstreetmap.org/export/embed.html?bbox=-0.489025115966797,-0.4881477355957031,51.52860238255413,51.5303346523714&amp;layer=mapnik&amp;marker=51.52946851396121,-0.48858642578125"
+    }
+  },
+  "textdomain": "map-block",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}

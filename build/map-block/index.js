@@ -2,10 +2,10 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/cover-block/edit.js":
-/*!*********************************!*\
-  !*** ./src/cover-block/edit.js ***!
-  \*********************************/
+/***/ "./src/map-block/edit.js":
+/*!*******************************!*\
+  !*** ./src/map-block/edit.js ***!
+  \*******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -24,139 +24,53 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 function Edit({
   attributes,
   setAttributes
 }) {
-  const onSelectImage = media => {
+  const onMapUrlChange = mapUrl => {
     setAttributes({
-      backgroundImage: media.url
+      mapUrl
     });
-  };
-  const calculateFontSize = () => {
-    const baseFontSize = 15; // Adjust this value as needed for a larger font size
-    const fontSizeWidth = attributes.imageWidth * baseFontSize / 100;
-    const fontSizeHeight = attributes.imageHeight * baseFontSize / 400;
-    const fontSize = Math.min(fontSizeWidth, fontSizeHeight);
-    const colorFactor = (attributes.imageWidth + attributes.imageHeight) / 150; // Adjust this factor as needed
-    const adjustedFontSize = fontSize * colorFactor;
-    return `${adjustedFontSize}px`;
   };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)()
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Block Settings", "cover-block")
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.MediaUpload, {
-    onSelect: onSelectImage,
-    type: "image",
-    value: attributes.backgroundImage,
-    render: ({
-      open
-    }) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
-      onClick: open
-    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Upload Image", "cover-block"))
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Image Width (%)", "cover-block"),
-    value: attributes.imageWidth,
-    onChange: value => setAttributes({
-      imageWidth: value
-    }),
-    min: 50,
-    max: 100
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Image Height (px)", "cover-block"),
-    value: attributes.imageHeight,
-    onChange: value => setAttributes({
-      imageHeight: value
-    }),
-    min: 50,
-    max: 800
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Image Opacity", "cover-block"),
-    value: attributes.imageOpacity,
-    onChange: value => setAttributes({
-      imageOpacity: value
-    }),
-    min: 0,
-    max: 1,
-    step: 0.1
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Content Font", "cover-block"),
-    value: attributes.contentFont,
-    onChange: value => setAttributes({
-      contentFont: value
-    })
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.CheckboxControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Bold", "cover-block"),
-    checked: attributes.isContentBold,
-    onChange: value => setAttributes({
-      isContentBold: value
-    })
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ColorPicker, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Content Color", "cover-block"),
-    color: attributes.contentColor,
-    onChange: value => setAttributes({
-      contentColor: value
-    })
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Map Settings", "map-block")
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Map URL", "map-block"),
+    value: attributes.mapUrl,
+    onChange: onMapUrlChange,
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Enter map URL...", "map-block")
   }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "cover-block",
+    className: "map-block"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("iframe", {
+    title: "Map",
+    width: "100%",
+    height: "400",
     style: {
-      backgroundImage: `url('${attributes.backgroundImage}')`,
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      width: `${attributes.imageWidth}%`,
-      height: `${attributes.imageHeight}px`,
-      position: "relative",
-      minHeight: "200px"
-    }
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "overlay",
-    style: {
-      backgroundColor: `rgba(0, 0, 0, ${attributes.imageOpacity})`,
-      position: "absolute",
-      top: 0,
-      right: 0,
-      bottom: 0,
-      left: 0,
-      width: "100%"
-    }
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
-    tagName: "p",
-    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Enter content...", "cover-block"),
-    value: attributes.content,
-    onChange: value => setAttributes({
-      content: value
-    }),
-    style: {
-      color: attributes.contentColor,
-      fontFamily: attributes.contentFont,
-      fontSize: calculateFontSize(),
-      fontWeight: attributes.isContentBold ? "bold" : "normal",
-      textAlign: "center",
-      position: "absolute",
-      top: "50%",
-      left: "50%",
-      transform: "translate(-50%, -50%)"
-    }
+      border: 0
+    },
+    src: `https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q=${attributes.mapUrl}`,
+    allowFullScreen: true
   })));
 }
 
 /***/ }),
 
-/***/ "./src/cover-block/index.js":
-/*!**********************************!*\
-  !*** ./src/cover-block/index.js ***!
-  \**********************************/
+/***/ "./src/map-block/index.js":
+/*!********************************!*\
+  !*** ./src/map-block/index.js ***!
+  \********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.scss */ "./src/cover-block/style.scss");
-/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/cover-block/edit.js");
-/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./save */ "./src/cover-block/save.js");
-/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./block.json */ "./src/cover-block/block.json");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.scss */ "./src/map-block/style.scss");
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/map-block/edit.js");
+/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./save */ "./src/map-block/save.js");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./block.json */ "./src/map-block/block.json");
 /**
  * Registers a new block provided a unique name and an object defining its behavior.
  *
@@ -198,10 +112,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/cover-block/save.js":
-/*!*********************************!*\
-  !*** ./src/cover-block/save.js ***!
-  \*********************************/
+/***/ "./src/map-block/save.js":
+/*!*******************************!*\
+  !*** ./src/map-block/save.js ***!
+  \*******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -213,65 +127,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
 
-/**
- * React hook that is used to mark the block wrapper element.
- * It provides all the necessary props like the class name.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
- */
 
-
-/**
- * The save function defines the way in which the different attributes should
- * be combined into the final markup, which is then serialized by the block
- * editor into `post_content`.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#save
- *
- * @return {Element} Element to render.
- */
 function save({
   attributes
 }) {
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save()
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "cover-block",
+    ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save(),
+    className: "map-block"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("iframe", {
+    title: "Map",
+    width: "100%",
+    height: "400",
     style: {
-      backgroundImage: `url('${attributes.backgroundImage}')`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      position: 'relative',
-      minHeight: '200px'
-    }
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "overlay",
-    style: {
-      backgroundColor: attributes.overlayColor,
-      position: 'absolute',
-      top: 0,
-      right: 0,
-      bottom: 0,
-      left: 0
-    }
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-    style: {
-      color: '#fff',
-      textAlign: 'center',
-      position: 'absolute',
-      top: '50%',
-      left: '50%',
-      transform: 'translate(-50%, -50%)'
-    }
-  }, attributes.buttonText)));
+      border: 0
+    },
+    src: `https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q=${attributes.mapUrl}`,
+    allowFullScreen: true
+  }));
 }
 
 /***/ }),
 
-/***/ "./src/cover-block/style.scss":
-/*!************************************!*\
-  !*** ./src/cover-block/style.scss ***!
-  \************************************/
+/***/ "./src/map-block/style.scss":
+/*!**********************************!*\
+  !*** ./src/map-block/style.scss ***!
+  \**********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -330,13 +210,13 @@ module.exports = window["wp"]["i18n"];
 
 /***/ }),
 
-/***/ "./src/cover-block/block.json":
-/*!************************************!*\
-  !*** ./src/cover-block/block.json ***!
-  \************************************/
+/***/ "./src/map-block/block.json":
+/*!**********************************!*\
+  !*** ./src/map-block/block.json ***!
+  \**********************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/cover-block","version":"0.1.0","title":"Cover Block","category":"widgets","icon":"cover-image","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false},"attributes":{"backgroundImage":{"type":"string","default":""},"overlayColor":{"type":"string","default":"rgba(0,0,0,0)"},"buttonText":{"type":"string","default":"Read More"},"imageWidth":{"type":"number","default":50},"imageHeight":{"type":"number","default":200},"imageOpacity":{"type":"number","default":0.7},"content":{"type":"string","default":""},"contentFont":{"type":"string","default":"Arial"},"contentColor":{"type":"string","default":"#ffffff"},"contentFontSize":{"type":"number","default":16}},"textdomain":"cover-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/map-block","version":"0.1.0","title":"Map Block","category":"widgets","icon":"location","description":"A block to embed maps using a URL.","supports":{"html":false,"align":["wide","full"]},"attributes":{"mapUrl":{"type":"string","default":"https://www.openstreetmap.org/export/embed.html?bbox=-0.489025115966797,-0.4881477355957031,51.52860238255413,51.5303346523714&amp;layer=mapnik&amp;marker=51.52946851396121,-0.48858642578125"}},"textdomain":"map-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ })
 
@@ -450,8 +330,8 @@ module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/tru
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
-/******/ 			"cover-block/index": 0,
-/******/ 			"cover-block/style-index": 0
+/******/ 			"map-block/index": 0,
+/******/ 			"map-block/style-index": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -501,7 +381,7 @@ module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/tru
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["cover-block/style-index"], () => (__webpack_require__("./src/cover-block/index.js")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["map-block/style-index"], () => (__webpack_require__("./src/map-block/index.js")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

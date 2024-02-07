@@ -28,6 +28,8 @@ function rating_plugin_rating_plugin_block_init() {
 	register_block_type( __DIR__ . '/build/star-rating' );
 	register_block_type( __DIR__ . '/build/tab-bar');
 	register_block_type( __DIR__ . '/build/cover-block');
+	register_block_type( __DIR__ . '/build/map-block');
+	register_block_type( __DIR__ . '/build/destination-highlight');
 	
 	
 }

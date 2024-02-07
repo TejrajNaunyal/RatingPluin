@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "title": "Cover Block",
   "category": "widgets",
-  "icon": "cover",
+  "icon": "cover-image",
   "description": "Example block scaffolded with Create Block tool.",
   "example": {},
   "supports": {

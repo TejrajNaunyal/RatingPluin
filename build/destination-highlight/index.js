@@ -2,15 +2,15 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/cover-block/edit.js":
-/*!*********************************!*\
-  !*** ./src/cover-block/edit.js ***!
-  \*********************************/
+/***/ "./src/destination-highlight/edit.js":
+/*!*******************************************!*\
+  !*** ./src/destination-highlight/edit.js ***!
+  \*******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Edit)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
@@ -24,139 +24,169 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-function Edit({
+const Edit = ({
   attributes,
   setAttributes
-}) {
-  const onSelectImage = media => {
+}) => {
+  const {
+    contentTitle,
+    titleColor,
+    titleBgColor,
+    titleFontSize,
+    imageUrl,
+    description,
+    descriptionColor,
+    descriptionBgColor,
+    descriptionFontSize,
+    learnMoreUrl,
+    imageWidth
+  } = attributes;
+  const onChangeContentTitle = newTitle => {
     setAttributes({
-      backgroundImage: media.url
+      contentTitle: newTitle
     });
   };
-  const calculateFontSize = () => {
-    const baseFontSize = 15; // Adjust this value as needed for a larger font size
-    const fontSizeWidth = attributes.imageWidth * baseFontSize / 100;
-    const fontSizeHeight = attributes.imageHeight * baseFontSize / 400;
-    const fontSize = Math.min(fontSizeWidth, fontSizeHeight);
-    const colorFactor = (attributes.imageWidth + attributes.imageHeight) / 150; // Adjust this factor as needed
-    const adjustedFontSize = fontSize * colorFactor;
-    return `${adjustedFontSize}px`;
+  const onChangeDescription = newDescription => {
+    setAttributes({
+      description: newDescription
+    });
   };
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)()
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Block Settings", "cover-block")
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.MediaUpload, {
-    onSelect: onSelectImage,
-    type: "image",
-    value: attributes.backgroundImage,
-    render: ({
-      open
-    }) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
-      onClick: open
-    }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Upload Image", "cover-block"))
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Image Width (%)", "cover-block"),
-    value: attributes.imageWidth,
-    onChange: value => setAttributes({
-      imageWidth: value
-    }),
+  const onSelectImage = newImage => {
+    setAttributes({
+      imageUrl: newImage.url
+    });
+  };
+  const onChangeLearnMoreUrl = newUrl => {
+    setAttributes({
+      learnMoreUrl: newUrl
+    });
+  };
+  const onChangeImageWidth = newWidth => {
+    setAttributes({
+      imageWidth: newWidth
+    });
+  };
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Image Settings', 'destination-highlight')
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
+    className: "widthControler",
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Image Width', 'destination-highlight'),
+    value: imageWidth,
+    onChange: onChangeImageWidth,
     min: 50,
-    max: 100
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Image Height (px)", "cover-block"),
-    value: attributes.imageHeight,
-    onChange: value => setAttributes({
-      imageHeight: value
-    }),
-    min: 50,
-    max: 800
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Image Opacity", "cover-block"),
-    value: attributes.imageOpacity,
-    onChange: value => setAttributes({
-      imageOpacity: value
-    }),
-    min: 0,
-    max: 1,
-    step: 0.1
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Content Font", "cover-block"),
-    value: attributes.contentFont,
-    onChange: value => setAttributes({
-      contentFont: value
+    max: 500,
+    step: 10
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.URLInputButton, {
+    className: "Urlinsert",
+    url: imageUrl,
+    onChange: newUrl => setAttributes({
+      imageUrl: newUrl
     })
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.CheckboxControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Bold", "cover-block"),
-    checked: attributes.isContentBold,
-    onChange: value => setAttributes({
-      isContentBold: value
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Title Settings', 'destination-highlight')
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.FontSizePicker, {
+    className: "fontsize",
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Font Size', 'destination-highlight'),
+    value: titleFontSize,
+    onChange: newSize => setAttributes({
+      titleFontSize: newSize
     })
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ColorPicker, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Content Color", "cover-block"),
-    color: attributes.contentColor,
-    onChange: value => setAttributes({
-      contentColor: value
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.ColorPalette, {
+    className: "fontsize",
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Text Color', 'destination-highlight'),
+    value: titleColor,
+    onChange: newColor => setAttributes({
+      titleColor: newColor
+    })
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.ColorPalette, {
+    className: "fontsize",
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Background Color', 'destination-highlight'),
+    value: titleBgColor,
+    onChange: newColor => setAttributes({
+      titleBgColor: newColor
+    })
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Description Settings', 'destination-highlight')
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.FontSizePicker, {
+    className: "fontsize",
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Font Size', 'destination-highlight'),
+    value: descriptionFontSize,
+    onChange: newSize => setAttributes({
+      descriptionFontSize: newSize
+    })
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.ColorPalette, {
+    className: "fontsize",
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Text Color', 'destination-highlight'),
+    value: descriptionColor,
+    onChange: newColor => setAttributes({
+      descriptionColor: newColor
+    })
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.ColorPalette, {
+    className: "fontsize",
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Background Color', 'destination-highlight'),
+    value: descriptionBgColor,
+    onChange: newColor => setAttributes({
+      descriptionBgColor: newColor
     })
   }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "cover-block",
-    style: {
-      backgroundImage: `url('${attributes.backgroundImage}')`,
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      width: `${attributes.imageWidth}%`,
-      height: `${attributes.imageHeight}px`,
-      position: "relative",
-      minHeight: "200px"
-    }
+    ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)()
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "overlay",
+    className: "destination-highlight-block"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.MediaUpload, {
+    onSelect: onSelectImage,
+    render: ({
+      open
+    }) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+      onClick: open
+    }, imageUrl ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+      src: imageUrl,
+      alt: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Destination Image', 'destination-highlight'),
+      style: {
+        width: imageWidth
+      }
+    }) : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Upload Destination Image', 'destination-highlight'))
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    tagName: "h2",
+    value: contentTitle,
+    onChange: onChangeContentTitle,
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Enter Content Title', 'destination-highlight'),
     style: {
-      backgroundColor: `rgba(0, 0, 0, ${attributes.imageOpacity})`,
-      position: "absolute",
-      top: 0,
-      right: 0,
-      bottom: 0,
-      left: 0,
-      width: "100%"
+      color: titleColor,
+      backgroundColor: titleBgColor,
+      fontSize: titleFontSize
     }
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     tagName: "p",
-    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Enter content...", "cover-block"),
-    value: attributes.content,
-    onChange: value => setAttributes({
-      content: value
-    }),
+    value: description,
+    onChange: onChangeDescription,
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Enter Description', 'destination-highlight'),
     style: {
-      color: attributes.contentColor,
-      fontFamily: attributes.contentFont,
-      fontSize: calculateFontSize(),
-      fontWeight: attributes.isContentBold ? "bold" : "normal",
-      textAlign: "center",
-      position: "absolute",
-      top: "50%",
-      left: "50%",
-      transform: "translate(-50%, -50%)"
+      color: descriptionColor,
+      backgroundColor: descriptionBgColor,
+      fontSize: descriptionFontSize
     }
-  })));
-}
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.URLInputButton, {
+    url: learnMoreUrl,
+    onChange: onChangeLearnMoreUrl
+  }))));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Edit);
 
 /***/ }),
 
-/***/ "./src/cover-block/index.js":
-/*!**********************************!*\
-  !*** ./src/cover-block/index.js ***!
-  \**********************************/
+/***/ "./src/destination-highlight/index.js":
+/*!********************************************!*\
+  !*** ./src/destination-highlight/index.js ***!
+  \********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.scss */ "./src/cover-block/style.scss");
-/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/cover-block/edit.js");
-/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./save */ "./src/cover-block/save.js");
-/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./block.json */ "./src/cover-block/block.json");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.scss */ "./src/destination-highlight/style.scss");
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/destination-highlight/edit.js");
+/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./save */ "./src/destination-highlight/save.js");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./block.json */ "./src/destination-highlight/block.json");
 /**
  * Registers a new block provided a unique name and an object defining its behavior.
  *
@@ -198,10 +228,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/cover-block/save.js":
-/*!*********************************!*\
-  !*** ./src/cover-block/save.js ***!
-  \*********************************/
+/***/ "./src/destination-highlight/save.js":
+/*!*******************************************!*\
+  !*** ./src/destination-highlight/save.js ***!
+  \*******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -233,45 +263,34 @@ __webpack_require__.r(__webpack_exports__);
 function save({
   attributes
 }) {
+  const {
+    contentTitle,
+    imageUrl,
+    description,
+    learnMoreUrl,
+    imageWidth
+  } = attributes;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save()
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "cover-block",
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: imageUrl,
+    alt: contentTitle,
     style: {
-      backgroundImage: `url('${attributes.backgroundImage}')`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      position: 'relative',
-      minHeight: '200px'
+      width: imageWidth
     }
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "overlay",
-    style: {
-      backgroundColor: attributes.overlayColor,
-      position: 'absolute',
-      top: 0,
-      right: 0,
-      bottom: 0,
-      left: 0
-    }
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-    style: {
-      color: '#fff',
-      textAlign: 'center',
-      position: 'absolute',
-      top: '50%',
-      left: '50%',
-      transform: 'translate(-50%, -50%)'
-    }
-  }, attributes.buttonText)));
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, contentTitle), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "destination-highlight-block"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, description), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    href: learnMoreUrl
+  }, "Learn More")));
 }
 
 /***/ }),
 
-/***/ "./src/cover-block/style.scss":
-/*!************************************!*\
-  !*** ./src/cover-block/style.scss ***!
-  \************************************/
+/***/ "./src/destination-highlight/style.scss":
+/*!**********************************************!*\
+  !*** ./src/destination-highlight/style.scss ***!
+  \**********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -330,13 +349,13 @@ module.exports = window["wp"]["i18n"];
 
 /***/ }),
 
-/***/ "./src/cover-block/block.json":
-/*!************************************!*\
-  !*** ./src/cover-block/block.json ***!
-  \************************************/
+/***/ "./src/destination-highlight/block.json":
+/*!**********************************************!*\
+  !*** ./src/destination-highlight/block.json ***!
+  \**********************************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/cover-block","version":"0.1.0","title":"Cover Block","category":"widgets","icon":"cover-image","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false},"attributes":{"backgroundImage":{"type":"string","default":""},"overlayColor":{"type":"string","default":"rgba(0,0,0,0)"},"buttonText":{"type":"string","default":"Read More"},"imageWidth":{"type":"number","default":50},"imageHeight":{"type":"number","default":200},"imageOpacity":{"type":"number","default":0.7},"content":{"type":"string","default":""},"contentFont":{"type":"string","default":"Arial"},"contentColor":{"type":"string","default":"#ffffff"},"contentFontSize":{"type":"number","default":16}},"textdomain":"cover-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/destination-highlight","version":"1.0.0","title":"Destination Highlight","category":"widgets","icon":"media-interactive","description":"A block to highlight destinations with image, title, description, and a link.","supports":{"html":false},"keywords":["destination","highlight","travel","tourism"],"attributes":{"contentTitle":{"type":"string","default":""},"titleFontSize":{"type":"number","default":24},"titleColor":{"type":"string","default":"#000000"},"titleBgColor":{"type":"string","default":"transparent"},"titleFontFamily":{"type":"string","default":"inherit"},"imageUrl":{"type":"string","default":""},"description":{"type":"string","default":""},"descriptionFontSize":{"type":"number","default":16},"descriptionColor":{"type":"string","default":"#000000"},"descriptionBgColor":{"type":"string","default":"transparent"},"descriptionFontFamily":{"type":"string","default":"inherit"},"learnMoreUrl":{"type":"string","default":""},"imageWidth":{"type":"number","default":300}},"textdomain":"destination-highlight","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
 
 /***/ })
 
@@ -450,8 +469,8 @@ module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/tru
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
-/******/ 			"cover-block/index": 0,
-/******/ 			"cover-block/style-index": 0
+/******/ 			"destination-highlight/index": 0,
+/******/ 			"destination-highlight/style-index": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -501,7 +520,7 @@ module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/tru
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["cover-block/style-index"], () => (__webpack_require__("./src/cover-block/index.js")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["destination-highlight/style-index"], () => (__webpack_require__("./src/destination-highlight/index.js")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()
