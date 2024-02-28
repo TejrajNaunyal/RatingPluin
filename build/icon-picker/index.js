@@ -2,15 +2,15 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/map-block/edit.js":
-/*!*******************************!*\
-  !*** ./src/map-block/edit.js ***!
-  \*******************************/
+/***/ "./src/icon-picker/edit.js":
+/*!*********************************!*\
+  !*** ./src/icon-picker/edit.js ***!
+  \*********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Edit)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
@@ -20,86 +20,103 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_4__);
 
 
 
 
 
 
-function Edit({
+const Edit = ({
   attributes,
   setAttributes
-}) {
+}) => {
   const {
-    width,
-    height
+    selectedIcon
   } = attributes;
-  const [address, setAddress] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(attributes.address);
-  const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)();
-  const handleAddressChange = value => {
-    setAddress(value);
-    setAttributes({
-      address: value
-    });
+  const [isModalOpen, setIsModalOpen] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useState)(false);
+  const iconOptions = [{
+    value: 'fa-heart',
+    label: 'Heart'
+  }, {
+    value: 'fa-star',
+    label: 'Star'
+  }, {
+    value: 'fa-smile',
+    label: 'Smile'
+  }, {
+    value: 'fa-thumbs-up',
+    label: 'Thumbs Up'
+  }, {
+    value: 'fa-check',
+    label: 'Check'
+  }, {
+    value: 'fa-envelope',
+    label: 'Envelope'
+  }, {
+    value: 'fa-gears',
+    label: 'Gears'
+  }, {
+    value: 'fa-network-wired',
+    label: 'Network Wired'
+  }, {
+    value: 'fa-facebook-square',
+    label: 'Facebook'
+  }];
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
   };
-  const handleWidthChange = newWidth => {
+  const handleSelectIcon = value => {
     setAttributes({
-      width: newWidth
+      selectedIcon: value
     });
+    toggleModal();
   };
-  const handleHeightChange = newHeight => {
-    setAttributes({
-      height: newHeight
-    });
-  };
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    ...blockProps
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Block Settings", "map-block")
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Search Address", "map-block"),
-    value: address,
-    onChange: handleAddressChange,
-    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Enter a new place", "map-block")
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Width (in pixels)", "map-block"),
-    value: width,
-    onChange: handleWidthChange,
-    min: 100,
-    max: 1000
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Height (in pixels)", "map-block"),
-    value: height,
-    onChange: handleHeightChange,
-    min: 100,
-    max: 1000
-  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("iframe", {
-    width: width,
-    height: height,
-    style: {
-      border: 0
-    },
-    referrerPolicy: "no-referrer-when-downgrade",
-    src: `https://www.google.com/maps/embed/v1/place?key=AIzaSyArKguNxs3V5_j8SLzpKxjDM4G0G5ZkhA0&q=${address}`,
-    allowFullScreen: true
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Icon Settings', 'text-domain')
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Select Icon', 'text-domain'),
+    value: selectedIcon,
+    options: iconOptions.map(option => ({
+      value: option.value,
+      label: option.label
+    })),
+    onChange: value => setAttributes({
+      selectedIcon: value
+    }),
+    onFocus: toggleModal
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)()
+  }), isModalOpen && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Modal, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Select Icon', 'text-domain'),
+    onRequestClose: toggleModal
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, iconOptions.map(option => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    key: option.value,
+    onClick: () => handleSelectIcon(option.value)
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
+    className: `fa ${option.value}`
+  }))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
+    className: `fa ${selectedIcon}`
   }));
-}
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Edit);
 
 /***/ }),
 
-/***/ "./src/map-block/index.js":
-/*!********************************!*\
-  !*** ./src/map-block/index.js ***!
-  \********************************/
+/***/ "./src/icon-picker/index.js":
+/*!**********************************!*\
+  !*** ./src/icon-picker/index.js ***!
+  \**********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.scss */ "./src/map-block/style.scss");
-/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/map-block/edit.js");
-/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./save */ "./src/map-block/save.js");
-/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./block.json */ "./src/map-block/block.json");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.scss */ "./src/icon-picker/style.scss");
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/icon-picker/edit.js");
+/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./save */ "./src/icon-picker/save.js");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./block.json */ "./src/icon-picker/block.json");
 /**
  * Registers a new block provided a unique name and an object defining its behavior.
  *
@@ -141,10 +158,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/map-block/save.js":
-/*!*******************************!*\
-  !*** ./src/map-block/save.js ***!
-  \*******************************/
+/***/ "./src/icon-picker/save.js":
+/*!*********************************!*\
+  !*** ./src/icon-picker/save.js ***!
+  \*********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -153,34 +170,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
 
-
+/**
+ * The save function defines the way in which the different attributes should
+ * be combined into the final markup, which is then serialized by the block
+ * editor into `post_content`.
+ *
+ * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#save
+ *
+ * @return {Element} Element to render.
+ */
 function save({
   attributes
 }) {
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save(),
-    className: "map-block"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("iframe", {
-    width: width,
-    height: height,
-    style: {
-      border: 0
-    },
-    referrerPolicy: "no-referrer-when-downgrade",
-    src: `https://www.google.com/maps/embed/v1/place?key=AIzaSyArKguNxs3V5_j8SLzpKxjDM4G0G5ZkhA0&q=${address}`,
-    allowFullScreen: true
+  const {
+    selectedIcon
+  } = attributes;
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
+    className: `fa ${selectedIcon}`
   }));
 }
 
 /***/ }),
 
-/***/ "./src/map-block/style.scss":
-/*!**********************************!*\
-  !*** ./src/map-block/style.scss ***!
-  \**********************************/
+/***/ "./src/icon-picker/style.scss":
+/*!************************************!*\
+  !*** ./src/icon-picker/style.scss ***!
+  \************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -229,6 +245,16 @@ module.exports = window["wp"]["components"];
 
 /***/ }),
 
+/***/ "@wordpress/element":
+/*!*********************************!*\
+  !*** external ["wp","element"] ***!
+  \*********************************/
+/***/ ((module) => {
+
+module.exports = window["wp"]["element"];
+
+/***/ }),
+
 /***/ "@wordpress/i18n":
 /*!******************************!*\
   !*** external ["wp","i18n"] ***!
@@ -239,13 +265,13 @@ module.exports = window["wp"]["i18n"];
 
 /***/ }),
 
-/***/ "./src/map-block/block.json":
-/*!**********************************!*\
-  !*** ./src/map-block/block.json ***!
-  \**********************************/
+/***/ "./src/icon-picker/block.json":
+/*!************************************!*\
+  !*** ./src/icon-picker/block.json ***!
+  \************************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/map-block","version":"0.1.0","title":"Map Block","category":"widgets","icon":"location","description":"A block to embed maps using a URL.","supports":{"html":false,"align":["wide","full"]},"attributes":{"mapUrl":{"type":"string","default":""}},"textdomain":"map-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/icon-picker","version":"0.1.0","title":"Icon Picker","category":"widgets","icon":"admin-site","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false},"attributes":{"selectedIcon":{"type":"string","default":""}},"textdomain":"icon-picker","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
 
 /***/ })
 
@@ -359,8 +385,8 @@ module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/tru
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
-/******/ 			"map-block/index": 0,
-/******/ 			"map-block/style-index": 0
+/******/ 			"icon-picker/index": 0,
+/******/ 			"icon-picker/style-index": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -410,7 +436,7 @@ module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/tru
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["map-block/style-index"], () => (__webpack_require__("./src/map-block/index.js")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["icon-picker/style-index"], () => (__webpack_require__("./src/icon-picker/index.js")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()
